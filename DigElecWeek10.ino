@@ -1,9 +1,9 @@
 #include "BetterButton.h"
 
-int button1Pin = 33;
-int button2Pin = 34;
-int button3Pin = 35;
-int button4Pin = 36;
+int button1Pin = 36;
+int button2Pin = 35;
+int button3Pin = 34;
+int button4Pin = 33;
 
 BetterButton button1(button1Pin, 0);
 BetterButton button2(button2Pin, 1);
