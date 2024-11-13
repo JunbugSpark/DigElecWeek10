@@ -6,6 +6,9 @@ int button3Pin = 35;
 int button4Pin = 34;
 int button5Pin = 33;
 
+int ledPin1 = 24;
+int ledPin2 = 11;
+
 BetterButton button1(button1Pin, 0);
 BetterButton button2(button2Pin, 1);
 BetterButton button3(button3Pin, 2);
@@ -25,6 +28,9 @@ void setup() {
   button4.releaseHandler(onRelease);
   button5.pressHandler(onPress);
   button5.releaseHandler(onRelease);
+
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
 }
 
 void loop() {
@@ -39,10 +45,14 @@ void onPress(int val) {
   Serial.print(val);
   Serial.println(" on");
   usbMIDI.sendNoteOn(val + 60, 90, 1);
+  digitalWrite(ledPin1, HIGH);
+  digitalWrite(ledPin2, LOW);
 }
 
 void onRelease(int val) {
   Serial.print(val);
   Serial.println(" off");
   usbMIDI.sendNoteOff(val + 60, 0, 1);
+  digitalWrite(ledPin1, LOW);
+  digitalWrite(ledPin2, HIGH);
 }
